@@ -1,17 +1,31 @@
 package org.example;
+import java.time.LocalDate;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import static org.example.Employee.calculateAverageAge;
+import static org.example.Employee.calculateAverageSalary;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Employee[] employees = {
+                new Employee("Иван Иванов", "Менеджер", "123-456-789", 50000, LocalDate.of(1984, 12, 1)),
+                new Employee("Петр Петров", "Разработчик", "234-567-890", 80000, LocalDate.of(1991, 4, 14)),
+                new Employee("Сидор Сидоров", "Тестировщик", "345-678-901", 60000, LocalDate.of(2001, 5, 3)),
+                new Employee("Анна Антонова", "Дизайнер", "456-789-012", 70000, LocalDate.of(1998, 8, 4)),
+                new Director("Мария Миронова", "Директор", "567-890-123", 75000, LocalDate.of(1983, 5, 28))
+        };
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        System.out.println("Средний возраст сотрудников: " + calculateAverageAge(employees));
+        System.out.println("Средняя зарплата сотрудников: " + calculateAverageSalary(employees));
+        Director.raiseSalary(employees, 5);
+        System.out.println("Повысили зарплату всем кроме директора:\n");
+        for (Employee employee : employees) {
+            System.out.println(employee.getInfo());
         }
+        Employee.increaseSalary(employees,35,10);
+        System.out.println("Повысили зарплату сотрудникам старше 35:\n");
+        for (Employee employee : employees) {
+            System.out.println(employee.getInfo());
+        }
+
     }
 }
