@@ -1,16 +1,14 @@
-package InterShop;
+package InterShop.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
 
 @Data
-@AllArgsConstructor
 public class Product {
     private String name;
     private double price;
-
-    @Override
-    public String toString() {
-        return name + " - " + price + " руб.";
-    }
 }
